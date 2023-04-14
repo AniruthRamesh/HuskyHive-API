@@ -1,8 +1,47 @@
 import express from "express"
 import cors from "cors"
+import mongoose from "mongoose"
+import dotenv from "dotenv"
+import GigRoute from "./routes/gig.route.js"
+import ReviewRoute from './routes/review.route.js'
+import UserRouter from "./routes/user.route.js"
+import Auth from "./auth/auth.js"
+import session from "express-session"
 
+
+//http://localhost:5173/
 const app = express()
-app.use(cors())
+dotenv.config()
+
+app.use(
+    session({
+      secret: "any string",
+      resave: false,
+      saveUninitialized: true,
+    })
+   );
+
+app.use(
+cors({
+    credentials: true,
+    origin:"http://localhost:5173"
+})
+);
+   
+app.use(express.json());
+
+const mongoConnection = async ()=>{
+    try{
+        await mongoose.connect(process.env.MONGO);
+    } catch(error){
+        console.log(error)
+    }
+}
+
+app.use("/api/gigs",GigRoute)
+app.use("/api/reviews",ReviewRoute)
+app.use("/api/users",UserRouter)
+app.use("/api/auth",Auth)
 
 
 app.get("/hello",(req,res)=>{
@@ -14,4 +53,9 @@ app.get("/",(req,res)=>{
 })
 
 
-app.listen(4000)
+
+app.listen(4000,()=>{
+    mongoConnection()
+    console.log("MongoDB connected")
+    console.log("Backend is running")
+})
