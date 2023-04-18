@@ -47,3 +47,16 @@ export const deleteUser = async(req,res,next)=>{
 }
 
 
+export const findUserByUserName = async (req, res, next) => {
+  const userName = req.params.userName;
+  try {
+    const user = await User.findOne({ userName: userName });
+    if (user) {
+      res.send(user);
+    } else {
+      res.status(404).send(`User with userName ${userName} not found`);
+    }
+  } catch (err) {
+    next(err);
+  }
+};

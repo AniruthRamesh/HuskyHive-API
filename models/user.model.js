@@ -72,6 +72,10 @@ lastDelivery: {
     type: String,
     required: false,
   },
+  mobile: {
+    type: String,
+    required: false,
+  },
 },{
   timestamps:true
 });

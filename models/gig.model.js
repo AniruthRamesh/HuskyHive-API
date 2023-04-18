@@ -3,7 +3,20 @@ const { Schema } = mongoose;
 
 const GigSchema = new Schema(
   {
-    userId: {
+  
+    projectCardImg: {
+      type: String,
+      required: true,
+    },
+    pp: {
+      type: String,
+      required: true,
+    },
+    cat: {
+      type: String,
+      required: true,
+    },
+    userName: {
       type: String,
       required: true,
     },
@@ -19,10 +32,6 @@ const GigSchema = new Schema(
       type: Number,
       default: 0,
     },
-    starNumber: {
-      type: Number,
-      default: 0,
-    },
     cardDesc: {
         type: String,
         required: true,
@@ -35,10 +44,6 @@ const GigSchema = new Schema(
       type: Number,
       required: true,
     },
-    cover: {
-      type: String,
-      required: true,
-    },
     images: {
       type: [String],
       required: false,
@@ -49,7 +54,7 @@ const GigSchema = new Schema(
     },
     revisionNumber: {
       type: Number,
-      required: true,
+      required: false,
     },
     features: {
       type: [String],

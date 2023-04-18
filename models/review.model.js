@@ -7,7 +7,11 @@ const ReviewSchema = new Schema(
       type: String,
       required: true,
     },
-    userId: {
+    userId:{
+      type:String,
+      required:true
+    },
+    userName: {
       type: String,
       required: true,
     },
@@ -20,7 +24,7 @@ const ReviewSchema = new Schema(
         type: String,
         required: true,
       },
-    desc: {
+    review: {
       type: String,
       required: true,
     },
