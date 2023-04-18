@@ -7,7 +7,7 @@ import ReviewRoute from './routes/review.route.js'
 import UserRouter from "./routes/user.route.js"
 import Auth from "./auth/auth.js"
 import session from "express-session"
-
+import Payment from "./routes/payment.route.js"
 
 //http://localhost:5173/
 const app = express()
@@ -24,7 +24,7 @@ app.use(
 app.use(
 cors({
     credentials: true,
-    origin:"http://localhost:5173"
+    origin:["http://localhost:5173","https://checkout.stripe.com"]
 })
 );
    
@@ -42,7 +42,7 @@ app.use("/api/gigs",GigRoute)
 app.use("/api/reviews",ReviewRoute)
 app.use("/api/users",UserRouter)
 app.use("/api/auth",Auth)
-
+app.use("/api/payment",Payment)
 
 app.get("/hello",(req,res)=>{
     res.send("life is good")
