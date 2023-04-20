@@ -13,7 +13,7 @@ router.post("/create-checkout-session",async (req, res) => {
         req.body.stripeData
       ],
       mode: 'payment',
-      success_url: 'http://localhost:5173/payment/success',
+      success_url: `http://localhost:5173/payment/success?gigId=${req.body.userData.gigId}&userId=${req.body.userData.userId}`,
       cancel_url: 'http://localhost:5173',
     });
     
