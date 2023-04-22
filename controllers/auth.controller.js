@@ -22,6 +22,7 @@ export const register = async (req,res)=>{
 
 
 export const login = async (req,res)=>{
+    
     try{
         const user = await User.findOne({userName:req.body.userName});
         if(!user){
@@ -34,6 +35,8 @@ export const login = async (req,res)=>{
 
         const {password,...info} = user._doc
         req.session.currentUser = info
+
+        console.log(info)
         res.json(info)
     } catch(err){
         res.status(500).send("Something went wrong")

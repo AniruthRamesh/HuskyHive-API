@@ -20,13 +20,22 @@ app.use(
       saveUninitialized: true,
     })
    );
+//    app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//    });
 
-app.use(
-cors({
-    credentials: true,
-    origin:["http://localhost:5173","https://checkout.stripe.com"]
-})
-);
+// app.use(
+// cors({
+//     credentials: true,
+//     origin:["http://127.0.0.1:5173/","https://checkout.stripe.com"]
+// })
+// );
+app.use(cors({
+    origin:true,
+    credentials: true
+  }));
    
 app.use(express.json());
 
