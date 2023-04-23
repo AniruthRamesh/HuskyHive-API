@@ -32,18 +32,10 @@ export const updateUser = async (req, res, next) => {
   }
 };
 
-export const deleteUser = async(req,res,next)=>{
-  const user = await User.findById(req.params.id)
-  try {
-    if(req.userId === req.params.id){
-      const newUser = await User.findByIdAndDelete(req.params.id, req.body, { new: true });
-       res.status(200).send(newUser)
-     }else{
-       return next(createError(404,"You can delete only your account"))
-     }
-  } catch (err) {
-    next(err);
-  }
+export const deleteUser = async(req,res)=>{
+  
+  const newUser = await User.findByIdAndDelete(req.params.id)
+ res.send(newUser);
 }
 
 
@@ -60,3 +52,6 @@ export const findUserByUserName = async (req, res, next) => {
     next(err);
   }
 };
+
+
+

@@ -62,3 +62,13 @@ export const userProfile = async(req,res)=>{
      res.send(currentUser);
   
   }
+  export const findAllUsers = async (req, res, next) => {
+    try {
+      const users = await User.find({});
+      res.send(users);
+    } catch (err) {
+      res.send(err);
+      next(err);        
+    }
+  };
+  

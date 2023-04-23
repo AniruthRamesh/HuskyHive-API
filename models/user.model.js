@@ -76,6 +76,10 @@ lastDelivery: {
     type: String,
     required: false,
   },
+  isAdmin:{
+    type:Boolean,
+    default:false,
+  }
 },{
   timestamps:true
 });
