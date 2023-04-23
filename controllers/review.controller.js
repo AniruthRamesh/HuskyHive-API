@@ -37,3 +37,14 @@ export const deleteReview = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getUserReviews = async(req,res)=>{
+  try {
+    const reviews = await Review.find({ userName: req.params.username });
+    
+    res.status(200).send(reviews);
+  } catch (err) {
+    next(err);
+  }
+
+}
