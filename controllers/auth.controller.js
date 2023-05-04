@@ -1,5 +1,6 @@
 import User from "../models/user.model.js"
 import bcrypt from "bcrypt"
+import Token from "../models/token.model.js"
 
 export const register = async (req,res)=>{
     try{
